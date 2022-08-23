@@ -1,12 +1,14 @@
-function  fibonacci(num: number): number{
-  if (num == 1 || num==2) return 1;
+function fibonacci(num: number): number{
+  if (num==1 || num==2) return 1;
+  return fibonacci(num-1) + fibonacci(num-2);
+}
 
-  return  fibonacci(num -1) + fibonacci(num -2);
+let n: number = 5;
+
+let sum = 0;
+console.log("Dãy số fibonacci: ");
+for (let i=1;i<=n;i++){
+  console.log(fibonacci(i));
+  sum += fibonacci(i);
 }
-let n: number =10;
-let sum =0;
-for (let i: number=1; i<=n; i++){
-  console.log(fibonacci(i))
-  sum = sum + i;
-}
-console.log("Sum: " + sum);
+console.log("Sum = "+sum);

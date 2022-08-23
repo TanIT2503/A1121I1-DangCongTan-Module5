@@ -1,0 +1,27 @@
+
+<div class="container">
+  <h1>Calculator</h1>
+  <div class="form-group p-3">
+    <label for="firstNum">Số thứ nhất: </label>
+    <input type="number" class="form-control" #element id="firstNum" [value]="firstNum" placeholder="Nhập số thứ nhất"  (change)="changeFirstNum(element.value)">
+  </div>
+  <div class="form-group p-3">
+    <label for="secondNum">Số thứ hai: </label>
+    <input type="number" class="form-control" #element1 id="secondNum" [value]="secondNum" placeholder="Nhập số thứ hai" (change)="changeSecondNum(element1.value)">
+  </div>
+  <div class="form-group p-3">
+    <label for="exampleFormControlSelect1">Phép tính: </label>
+    <select class="form-control" #element2 id="exampleFormControlSelect1" [value]="operation"  (change)="changeOperation(element2.value)">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+  </div>
+  <div style="padding: 30px">
+    <button class="btn btn-primary" (click)="calculate()">Tính kết quả</button>
+  </div>
+  <div class="form-group">
+    <label style="font-size: large; font-weight: bold; padding: 30px">Kết quả: {{result}}</label>
+  </div>
+</div>
