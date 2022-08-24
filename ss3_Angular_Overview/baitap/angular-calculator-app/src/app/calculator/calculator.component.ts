@@ -10,11 +10,11 @@ export class CalculatorComponent {
   secondNum: number;
   operation: string;
   result: number;
-  changeFirstNum(firstNum) {
-    this.firstNum = firstNum;
+  changeFirstNum(firstNum: any) {
+    this.firstNum = parseInt(firstNum);
   }
-  changeSecondNum(secondNum) {
-    this.secondNum = secondNum;
+  changeSecondNum(secondNum: any) {
+    this.secondNum = parseInt(secondNum);
   }
   changeOperation(operation) {
     this.operation = operation;

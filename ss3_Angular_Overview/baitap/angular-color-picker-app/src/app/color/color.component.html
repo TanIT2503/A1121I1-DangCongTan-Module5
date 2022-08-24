@@ -1,12 +1,7 @@
-<div class="container p-3" style="border: solid 3px; border-radius: 30px; background-color: wheat">
+<div class="container p-3" style="border: solid 3px; border-radius: 30px" [style.background-color]="colorPick">
   <h1>Bộ chọn màu</h1>
   <div style="padding: 30px">
     <label style="font-weight: bold; font-size: large">Chọn màu: &nbsp;</label>
     <input type="color" style="border-radius: 4px" #element [value]="colorPick" (change)="changeColor(element.value)">
   </div>
-  <div style="padding: 30px">
-    <label style="font-weight: bold; font-size: large">Màu đã chọn: </label>
-    <div style="height: 500px; width: 500px; border-radius: 20px" [style.background-color]="colorPick"></div>
-  </div>
-
 </div>
