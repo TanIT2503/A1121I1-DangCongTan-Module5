@@ -1,0 +1,147 @@
+<div class="form__container-register" [formGroup]="formRegister" (ngSubmit)="register()">
+  <div class="card">
+    <div class="card-body">
+      <form>
+        <!-- Email input -->
+        <mdb-form-control>
+          <input mdbInput type="text" id="form1" class="form-control" formControlName="email"/>
+          <label mdbLabel class="form-label" for="form1">Email</label>
+        </mdb-form-control>
+        <div *ngIf="!formRegister.get('email')?.valid && (formRegister.get('email')?.touched||formRegister.get('email')?.dirty)">
+          <div [hidden]="!formRegister.get('email').errors.required">
+            <small class="form__text">
+              Email không được để trống.</small>
+          </div>
+          <div [hidden]="!formRegister.get('email').errors.pattern">
+            <small class="form__text">
+              Email chưa đúng định dạng.</small>
+          </div>
+        </div>
+
+        <!-- Password input -->
+        <mdb-form-control>
+          <input mdbInput type="text" id="pass" class="form-control" formControlName="pass"/>
+          <label mdbLabel class="form-label" for="pass">Password</label>
+        </mdb-form-control>
+        <div *ngIf="!formRegister.get('pass').get('password')?.valid && (formRegister.get('pass').get('password')?.touched || formRegister.get('pass').get('password')?.dirty)">
+          <div [hidden]="!formRegister.get('password').errors.required">
+            <small class="form__text">
+              Mật khẩu không được để trống.</small>
+          </div>
+          <div [hidden]="formRegister.get('pass').get('password').errors.minLength">
+            <small class="form__text">Mật khẩu phải có ít nhất 6 ký tự.</small>
+          </div>
+        </div>
+
+        <mdb-form-control>
+          <input mdbInput type="text" id="confirm_pass" class="form-control" formControlName="pass"/>
+          <label mdbLabel class="form-label" for="confirm_pass"> Confirm password</label>
+        </mdb-form-control>
+        <div>
+          <small class="form__text" *ngIf="formRegister.hasError('passwordNotMatch', ['pass'])">Mật khẩu không trùng khớp.</small>
+        </div>
+
+        <mdb-form-control>
+          <input mdbInput type="text" id="Age" class="form-control" formControlName="age"/>
+          <label mdbLabel class="form-label" for="Age">Age</label>
+        </mdb-form-control>
+        <div *ngIf="!formRegister.get('age')?.valid && (formRegister.get('age')?.touched || formRegister.get('age')?.dirty)">
+          <div [hidden]="!formRegister.get('age').errors.required">
+            <small class="form__text" >
+              Bạn chưa nhập tuổi.</small>
+          </div>
+          <div [hidden]="!formRegister.get('age').errors.min">
+            <small class="form__text" >
+              Tuổi phải trên 18.</small>
+          </div>
+        </div>
+        <mdb-form-control>
+          <select mdbInput type="text" id="country" class="form-control" formControlName="country">
+            <option mdbInput value="{{country}}" *ngFor="let country of countryList">{{country}}</option>
+          </select>
+          <label mdbLabel class="form-label" for="country">Country</label>
+        </mdb-form-control>
+        <div *ngIf="!formRegister.get('country')?.valid && (formRegister.get('country')?.touched || formRegister.get('country')?.dirty)">
+          <small class="form__text">Vui lòng chọn quốc gia.</small>
+        </div>
+        <div class="radio__container">
+          <div class="form-check form-check-inline" formControlName="gender">
+            <input
+              mdbRadio
+              class="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio1"
+              value="option1"
+            />
+            <label class="form-check-label" for="inlineRadio1">Nam</label>
+          </div>
+          <div class="form-check form-check-inline" formControlName="gender">
+            <input
+              mdbRadio
+              class="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio2"
+              value="option2"
+            />
+            <label class="form-check-label" for="inlineRadio2">Nữ</label>
+          </div>
+          <div class="form-check form-check-inline" formControlName="gender">
+            <input
+              mdbRadio
+              class="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio3"
+              value="option3"
+            />
+            <label class="form-check-label" for="inlineRadio3">Khác</label>
+          </div>
+        </div>
+        <div *ngIf="!formRegister.get('gender')?.valid && (formRegister.get('gender')?.touched || formRegister.get('gender')?.dirty)">
+          <div [hidden]="!formRegister.get('gender').errors.required">
+            <small class="form__text">Vui lòngchọn giới tính.</small>
+          </div>
+        </div>
+        <mdb-form-control>
+          <input mdbInput type="text" id="phone" class="form-control" formControlName="phone"/>
+          <label mdbLabel class="form-label" for="phone">Phone</label>
+        </mdb-form-control>
+        <div *ngIf="!formRegister.get('phone')?.valid && (formRegister.get('phone')?.touched || formRegister.get('phone')?.dirty)">
+          <div [hidden]="!formRegister.get('phone').errors.required">
+            <small class="form__text">
+              Vui lòng nhập số điện thoại.</small>
+          </div >
+          <div [hidden]="!formRegister.get('phone').errors.pattern">
+            <small class="form__text">
+              Sai định dạng.</small>
+          </div>
+        </div>
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4" [disabled]="formRegister.invalid">Sign up</button>
+
+        <!-- Register buttons -->
+        <div class="text-center">
+          <p>or sign up with:</p>
+          <button type="button" class="btn btn-primary btn-floating mx-1">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+
+          <button type="button" class="btn btn-primary btn-floating mx-1">
+            <i class="fab fa-google"></i>
+          </button>
+
+          <button type="button" class="btn btn-primary btn-floating mx-1">
+            <i class="fab fa-twitter"></i>
+          </button>
+
+          <button type="button" class="btn btn-primary btn-floating mx-1">
+            <i class="fab fa-github"></i>
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

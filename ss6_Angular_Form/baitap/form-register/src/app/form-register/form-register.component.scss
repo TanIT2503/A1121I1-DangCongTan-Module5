@@ -1,0 +1,22 @@
+mdb-form-control{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.form__container-register, .radio__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.card{
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: unset !important;
+}
+.form__text{
+  font-style: italic;
+  color: Red;
+}

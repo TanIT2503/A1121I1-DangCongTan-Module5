@@ -1,0 +1,77 @@
+<div class="form__container-login" [formGroup]="formLogin" (ngSubmit)="login()">
+<div class="card">
+  <div class="card-body">
+      <form >
+        <!-- Email input -->
+        <mdb-form-control>
+          <input mdbInput type="text" id="form1" class="form-control" formControlName="email"/>
+          <label mdbLabel class="form-label" for="form1">Email</label>
+        </mdb-form-control>
+        <div *ngIf="!formLogin.get('email')?.valid && (formLogin.get('email')?.touched||formLogin.get('email')?.dirty)">
+          <div [hidden]="!formLogin.get('email').errors.required">
+            <small class="form__text">
+              Email không được để trống.</small>
+          </div>
+          <div [hidden]="!formLogin.get('email').errors.pattern">
+            <small class="form__text">
+              Email chưa đúng định dạng.</small>
+          </div>
+        </div>
+        <mdb-form-control>
+          <input mdbInput type="text" id="form2" class="form-control" formControlName="password"/>
+          <label mdbLabel class="form-label" for="form1">Password</label>
+        </mdb-form-control>
+        <div *ngIf="!formLogin.get('password')?.valid && (formLogin.get('password')?.touched || formLogin.get('password')?.dirty)">
+          <div [hidden]="!formLogin.get('password').errors.required">
+            <small class="form__text">
+              Mật khẩu không được để trống.</small>
+          </div>
+          <div [hidden]="formLogin.get('password').errors.minLength">
+            <small class="form__text">Mật khẩu phải có ít nhất 6 ký tự.</small>
+          </div>
+        </div>
+        <!-- 2 column grid layout for inline styling -->
+        <div class="row mb-4">
+          <div class="col d-flex justify-content-center">
+            <!-- Checkbox -->
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="form2Example34" checked />
+              <label class="form-check-label" for="form2Example34"> Remember me </label>
+            </div>
+          </div>
+
+          <div class="col">
+            <!-- Simple link -->
+            <a href="#!">Forgot password?</a>
+          </div>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4" [disabled]="formLogin.invalid">Sign in</button>
+
+        <!-- Register buttons -->
+        <div class="text-center">
+          <p>Not a member? <a href="#!">Register</a></p>
+          <p>or sign up with:</p>
+          <button type="button" class="btn btn-primary btn-floating mx-1">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+
+          <button type="button" class="btn btn-primary btn-floating mx-1">
+            <i class="fab fa-google"></i>
+          </button>
+
+          <button type="button" class="btn btn-primary btn-floating mx-1">
+            <i class="fab fa-twitter"></i>
+          </button>
+
+          <button type="button" class="btn btn-primary btn-floating mx-1">
+            <i class="fab fa-github"></i>
+          </button>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+</div>
