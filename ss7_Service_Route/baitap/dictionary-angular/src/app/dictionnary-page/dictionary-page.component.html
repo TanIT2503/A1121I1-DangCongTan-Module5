@@ -1,0 +1,6 @@
+<div class="card" style="width: 18rem;" *ngFor=" let dict of dicts">
+  <div class="card-body">
+    <h5 class="card-title">{{dict.word}}</h5>
+    <a class="btn btn-primary" [routerLink]="['/detail',dict.word]">Tra từ</a>
+  </div>
+</div>
