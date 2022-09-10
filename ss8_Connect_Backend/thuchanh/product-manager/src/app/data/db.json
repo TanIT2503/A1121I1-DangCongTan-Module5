@@ -1,0 +1,20 @@
+{
+  "categories": [
+    {
+      "name": "Appleeeeeeeeee",
+      "id": 1
+    },
+    {
+      "name": "Samsung",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Google"
+    },
+    {
+      "id": 4,
+      "name": "LG"
+    }
+  ]
+}
