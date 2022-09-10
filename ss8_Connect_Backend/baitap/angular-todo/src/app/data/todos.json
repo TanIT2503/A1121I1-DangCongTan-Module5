@@ -1,11 +1,6 @@
 {
   "todos": [
     {
-      "content": "Happy",
-      "completed": false,
-      "id": 1
-    },
-    {
       "content": "sad",
       "completed": false,
       "id": 2
@@ -14,6 +9,11 @@
       "content": "đâsdas",
       "completed": false,
       "id": 3
+    },
+    {
+      "content": "6",
+      "completed": false,
+      "id": 4
     }
   ]
 }

@@ -3,13 +3,13 @@
 </h2>
 <div class="col-md-8 offset-md-2">
   <input type="text" class="form-control" [formControl]="todoForm" (change)="saveTodo()">
-  <ul>
-    <li (click)="toggleTodo(i)"
-        [class.completed]="todo.completed" *ngFor="let todo of todoList; index as i">
-      <p>Id: {{todo.id}}</p>
-      <p>{{todo.content}}</p>
-      <button (click)="deleteTodo(todo.id)">Delete</button>
-      <button [routerLink]="['/edit', todo.id]">Edit</button>
-    </li>
-  </ul>
+  <div class="card p-3 m-3" style="width: 18rem;" (click)="toggleTodo(i)"
+       [class.completed]="todo.completed" *ngFor="let todo of todoList; index as i">
+    <div class="card-body">
+      <h5 class="card-title">Id: {{todo.id}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{todo.content}}</h6>
+      <button class="btn btn-primary" (click)="deleteTodo(todo.id)">Delete</button>
+      <button class="btn btn-warning" [routerLink]="['/edit', todo.id]">Edit</button>
+    </div>
+  </div>
 </div>
