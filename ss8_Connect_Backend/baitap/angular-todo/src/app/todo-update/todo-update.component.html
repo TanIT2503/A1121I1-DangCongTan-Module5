@@ -1,0 +1,6 @@
+<h2 class="text-center">
+  Todo Edit
+</h2>
+<div class="col-md-8 offset-md-2">
+  <input type="text" class="form-control" [formControl]="editTodo" [value]="todo.content" (change)="updateTodo()">
+</div>

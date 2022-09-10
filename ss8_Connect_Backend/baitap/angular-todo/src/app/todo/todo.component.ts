@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Todo} from '../todo';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ITodo} from '../model/itodo';
+import {TodoService} from '../service/todo.service';
 
-let _id = 1;
 
 @Component({
   selector: 'app-todo',
@@ -10,29 +10,41 @@ let _id = 1;
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
-  todos: Todo[] = [];
-  content = new FormControl();
-
-  constructor() {
-  }
-
+  todoList: ITodo[] = [];
+  todoForm = new FormControl();
+  constructor( private todoService: TodoService) { }
   ngOnInit() {
+    this.getAll();
+  }
+  getAll() {
+    this.todoService.getAll().subscribe((todoList) => {
+      this.todoList = todoList;
+    });
   }
 
+  saveTodo() {
+    const todo = this.todoForm.value;
+    this.todoService.saveTodo(todo).subscribe(
+      () => {
+      },
+      () => {
+        console.error();
+      },
+      () => {
+        this.getAll();
+        this.todoForm.reset();
+      }
+    );
+  }
   toggleTodo(i: number) {
-    this.todos[i].complete = !this.todos[i].complete;
+    this.todoList[i].completed = !this.todoList[i].completed;
   }
-
-  change() {
-    const value = this.content.value;
-    if (value) {
-      const todo: Todo = {
-        id: _id++,
-        content: value,
-        complete: false
-      };
-      this.todos.push(todo);
-      this.content.reset();
-    }
+  deleteTodo(id: number) {
+    this.todoService.deleteTodo(id).subscribe(
+      () => {},
+      () => {
+        console.error(); },
+      () => {this.getAll(); }
+    );
   }
 }
